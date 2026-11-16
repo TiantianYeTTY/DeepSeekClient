@@ -1,0 +1,77 @@
+name: DeepSeekClient
+options:
+  bundleIdPrefix: com.tiantianye
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+  groupSortPosition: none
+
+settingGroups:
+  app:
+    SWIFT_VERSION: "5.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+    CLANG_ENABLE_MODULES: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+    SWIFT_DISABLE_SANDBOX: YES
+    OTHER_SWIFT_FLAGS: "-disable-sandbox"
+
+targets:
+  DeepSeekClient:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    settings:
+      group: app
+      PRODUCT_BUNDLE_IDENTIFIER: com.tiantianye.deepseekclient
+      INFOPLIST_KEY_CFBundleDisplayName: DeepSeek客户端
+      INFOPLIST_KEY_UILaunchScreen_Generation: true
+      INFOPLIST_KEY_UISupportedInterfaceOrientations: "UIInterfaceOrientationPortrait"
+      INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+      ASSETCATALOG_COMPILER_APPICON_NAME: icon
+      ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+      GENERATE_INFOPLIST_FILE: YES
+      INFOPLIST_KEY_NSPhotoLibraryUsageDescription: "选择相册图片发送给 AI 进行识别"
+      INFOPLIST_KEY_NSCameraUsageDescription: "拍照后发送给 AI 进行识别"
+    sources:
+      - path: DeepSeekClient
+      - path: icon.icon
+    resources:
+      - path: DeepSeekClient/Resources
+
+  DeepSeekClientTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    settings:
+      group: app
+      PRODUCT_BUNDLE_IDENTIFIER: com.tiantianye.deepseekclient.tests
+      TEST_TARGET_NAME: DeepSeekClient
+    sources:
+      - path: DeepSeekClientTests
+    dependencies:
+      - target: DeepSeekClient
+
+  DeepSeekClientUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "15.0"
+    settings:
+      group: app
+      PRODUCT_BUNDLE_IDENTIFIER: com.tiantianye.deepseekclient.uitests
+      TEST_TARGET_NAME: DeepSeekClient
+    sources:
+      - path: DeepSeekClientUITests
+    dependencies:
+      - target: DeepSeekClient
+
+schemes:
+  DeepSeekClient:
+    build:
+      targets:
+        DeepSeekClient: all
+        DeepSeekClientUITests: [test]
+    test:
+      targets:
+        - DeepSeekClientTests
+        - DeepSeekClientUITests

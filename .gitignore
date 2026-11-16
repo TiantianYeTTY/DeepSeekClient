@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+*.swp
+
+# Xcode 构建产物
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# 内部工作记录（不开源）
+.workbuddy/
+
+# 密钥与本地配置
+*.xcconfig.local
+.secret
+secrets/
