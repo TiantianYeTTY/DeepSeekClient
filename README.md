@@ -38,8 +38,8 @@
 ## 📦 安装
 
 ```bash
-git clone https://github.com/TiantianYeTTY/DeepSeek客户端.git
-cd DeepSeek客户端
+git clone https://github.com/TiantianYeTTY/DeepSeekClient.git
+cd DeepSeekClient
 xcodegen generate --spec project.yml --project .
 open DeepSeekClient.xcodeproj
 ```
